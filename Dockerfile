@@ -10,10 +10,9 @@ ADD ./janusgraph-* /opt/
 
 RUN apk --no-cache add libarchive-tools
 
-RUN curl -OL https://github.com/JanusGraph/janusgraph/releases/download/v0.1.1/janusgraph-${JANUSGRAPH_VERSION}-hadoop2.zip | bsdtar -xf- -C /opt/
-
-#RUN ln -s /opt/janusgraph-${JANUSGRAPH_VERSION}-hadoop2.zip $JANUSGRAPH_HOME \
-#    && addgroup janusgraph \
-#    && adduser -S -G janusgraph janusgraph \
-#    && chown janusgraph:janusgraph -R /opt/janusgraph* \
-#    && chmod 754 /opt/janusgraph*
+RUN curl -L https://github.com/JanusGraph/janusgraph/releases/download/v0.1.1/janusgraph-${JANUSGRAPH_VERSION}-hadoop2.zip | bsdtar -xf- -C /opt/ \
+    && ln -s /opt/janusgraph-${JANUSGRAPH_VERSION}-hadoop2.zip $JANUSGRAPH_HOME \
+    && addgroup janusgraph \
+    && adduser -S -G janusgraph janusgraph \
+    && chown janusgraph:janusgraph -R /opt/janusgraph* \
+    && chmod 754 /opt/janusgraph*
