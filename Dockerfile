@@ -1,10 +1,10 @@
 FROM srakshit/alpine-base
 
-MAINTAINER Subham Rakshit
+MAINTAINER "Song Wei"
 
 ENV JANUSGRAPH_HOME="/opt/janusgraph" \
-    JANUSGRAPH_VERSION="0.1.1" \
-    PATH=$PATH:$JANUSGRAPH_HOME/bin
+    JANUSGRAPH_VERSION="0.1.1"
+ENV PATH="${JANUSGRAPH_HOME}/bin:${PATH}"
 
 ADD ./janusgraph-* /opt/
 
@@ -15,4 +15,7 @@ RUN curl -L https://github.com/JanusGraph/janusgraph/releases/download/v0.1.1/ja
     && addgroup janusgraph \
     && adduser -S -G janusgraph janusgraph \
     && chown janusgraph:janusgraph -R /opt/janusgraph* \
-    && chmod 754 /opt/janusgraph*
+    && chmod 754 /opt/janusgraph* \
+    && chmod u+x -R ${JANUSGRAPH_HOME}/bin
+
+USER janusgraph
