@@ -1,4 +1,4 @@
-FROM srakshit/alpine-base
+FROM bluepine/bigdata-alpine-base
 
 MAINTAINER "Song Wei"
 
