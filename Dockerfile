@@ -20,4 +20,4 @@ RUN curl -L https://github.com/JanusGraph/janusgraph/releases/download/v0.1.1/ja
     && sync
 
 USER janusgraph
-CWD ["/opt/janusgraph-startup.sh"]
+CMD ["/opt/janusgraph-startup.sh"]
