@@ -17,7 +17,7 @@ RUN curl -L https://github.com/JanusGraph/janusgraph/releases/download/v0.1.1/ja
     && chown janusgraph:janusgraph -R /opt/janusgraph* \
     && chmod 754 /opt/janusgraph* \
     && chmod u+x -R ${JANUSGRAPH_HOME}/bin \
-    && sync \
-    && /opt/janusgraph-properties.sh
+    && sync
 
 USER janusgraph
+CWD ["/opt/janusgraph/bin/gremlin-server.sh"]
